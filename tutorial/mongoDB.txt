@@ -1,0 +1,104 @@
+MongoDB tutorial:
+ 
+tables: called collections
+records: called documents
+
+>show dbs: list all the databases
+>show collection: list all the tables in a database
+
+There is no “create” command in the MongoDB shell. In order to create a database, 
+you will first need to switch the context to a non-existing database using the use command:
+
+eg: > use nonexistantdb
+
+MongoDB only creates the database when you first store data in that database.
+This data could be a collection or even a document.
+
+To add a document to your database, use the db.collection.insert() command.
+
+> use nonexistantdb
+> db.user.insert({name: "Big Badwolf", age: 205})
+WriteResult({ "nInserted" : 1 })
+:: collection called "user" is created inside database "nonexistantdb"
+
+eg::
+> use movies
+db.movies.insertOne(
+  {
+    title: "Fast and Furious",
+    genres: [ "Action", "Fiction" ],
+    runtime: 121,
+    rated: "R",
+    year: 2018,
+    directors: [ "Vin Disel" ],
+    cast: [ "Vin Disel", "Paul Walker", "Michelle Rodriges" ],
+    type: "movie"
+  }
+)
+
+::insert many records once
+db.movies.insertMany([
+   {
+      title: "Prison Break",
+      genres: [ "Action", "Drama" ],
+      runtime: 130,
+      rated: "PG-13",
+      year: 2005,
+      directors: [ "Wentworth Miller" ],
+      cast: [ "Wentworth Miller", "Robert Knepper", "Amaury Nolasco" ],
+      type: "series"
+    },
+    {
+      title: "Vampire Diaries",
+      genres: [ "Thriller", "Fantasy" ],
+      runtime: 105,
+      rated: "R",
+      year: 2008,
+      directors: [ "Judy Plec" ],
+      cast: [ "Nina Dobrev", "Paul Wseley", "Jodi Lyn Okeefe" ],
+      type: "series"
+    }
+])
+
+db.movies.find( {} ) { select * from movies }
+
+db.movies.find( { "rated": "R" } )
+
+db.movies.find( { "rated": "PG-13" } )
+
+db.movies.find( { "title": "Fast and Furious" } )
+
+db.createCollection("users"):: {create database users}
+
+db.users.insertMany([
+   {
+      username: "shawn72",
+      fname: "Shawn",
+      mname: "Mbuvi",
+	  lname: "Ngutu",
+      email: "shawnmbuvi@gmail.com",
+      password: "2950Cherry*30"
+    },
+  {
+      username: "mercy72",
+      fname: "Mercy",
+      mname: "Mukai",
+	  lname: "Mbuvi",
+      email: "mercymukai@gmail.com",
+      password: "50Cherries"
+    }
+])
+
+db.users.find( {} ) :: same as slect * from users
+
+MongoDB Tools ::eg. mongodump, mongoexport
+Install the tools separately
+Starting with MongoDB 4.4, the MongoDB Database Tools are now released separately from the MongoDB Server 
+and use their own versioning, with an initial version of 100.0.0. Previously, 
+these tools were released alongside the MongoDB Server and used matching versioning.
+
+::export one collection
+mongoexport --collection=products --db=ecommercestore --out="C:\Users\shawn.ngutu.SMART0\Dropbox\DBs\products.json"
+
+::export all collections
+mongodump -d ecommercestore -o "C:\Users\shawn.ngutu.SMART0\Dropbox\DBs"
