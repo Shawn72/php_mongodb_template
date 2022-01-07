@@ -9,7 +9,8 @@ $messages = array(
 	2=>'Error occured. Please try again.', 
 	3=>'Record saved successfully.',
     4=>'Record updated successfully.', 
-    5=>'Provide all the required fields.' 
+    5=>'Provide all the required fields.' ,
+    6=>'Select Category first.' 
 );
 
 //database name

@@ -10,12 +10,12 @@
   if(isset($_POST['btn'])){
       $product_name = $_POST['product_name'];
       $description  = $_POST['description'];
-      $price        = $_POST['price'];
-      $category     = $_POST['category'];
+      $price        = $_POST['price'];  
+      $category     = $_POST['category']; 
 
-      if(!$product_name || !$price || !$category || !$description){
-        $flag = 5; //null values error
-      }else{
+    if(!$product_name || !$price || !$description || !$category ){
+    $flag = 5; //null values error
+    }else{
           $insRec       = new MongoDB\Driver\BulkWrite;
           //insert record to MongoDB
           $insRec->insert(

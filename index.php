@@ -46,7 +46,7 @@ $dbcon = $connectmanager->executeQuery('ecommercestore.products', $query);
                         <td><input type='text' name='price' id='price' placeholder="Price" /></td>
                         <td>
                             <select name='category' id='category' class='form-control'  >
-                                <option value="">---select category--- </option>
+                                <option value="" disabled selected>---select category--- </option>
                                 <option value="Shampoo">Shampoo</option>
                                 <option value="Conditioner">Conditioner </option>
                                 <option value="Scrub">Scrub</option>
