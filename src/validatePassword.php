@@ -1,6 +1,6 @@
 <?php
 
-class ValidatePassword{
+class validatePassword{
 
     const MIN_LENGTH = 6;
     const MAX_LENGTH = 20;
