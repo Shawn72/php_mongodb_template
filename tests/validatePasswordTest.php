@@ -1,5 +1,5 @@
 <?php
-require_once('../src/validatePassword.php'); //dont forget this
+require_once('./src/validatePassword.php'); //dont forget this
 
 class ValidatePasswordTest extends PHPUnit_Framework_TestCase{
 
