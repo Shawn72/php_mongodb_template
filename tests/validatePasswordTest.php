@@ -1,7 +1,10 @@
 <?php
 require_once('./src/validatePassword.php'); //dont forget this
 
-class ValidatePasswordTest extends PHPUnit_Framework_TestCase{
+// use the following namespace
+use PHPUnit\Framework\TestCase;
+
+class ValidatePasswordTest extends TestCase{
 
     public function testValidLength(){
         $valpass = new ValidatePassword();
