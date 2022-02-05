@@ -28,8 +28,8 @@ require_once('dbconfig.php');
 
         <!-- <form name="form1" method="post"action="<?=$_SERVER["PHP_SELF"]; ?>"> -->
 
-        <form  action ="#" id="form_login"  >
-            <input type="hidden"  name="_login_user"  id="_register_user" value="1" /> 
+        <form  action ="login_action.php" id="form_login" method="post"  >
+            <input type="hidden"  name="_login_user"  id="_login_user" value="1" /> 
 
             <div class="form-group">
                 <label>Email</label>  
@@ -44,7 +44,7 @@ require_once('dbconfig.php');
             <br /> 
 
             <div class="form-group"> 
-                <input type="button" name="login_user" id="login_user" class="btn btn-info" value="Login" />  
+                <input type="submit" name="login_user" id="login_user" class="btn btn-info" value="Login" />  
             </div>
         </form>
 

@@ -1,4 +1,5 @@
 <?php
+session_start();
 //error_reporting(E_ALL ^ E_WARNING);
 //Tell PHP to log errors
 ini_set('log_errors', 'On');
@@ -8,7 +9,6 @@ ini_set('display_errors', 'Off');
 ini_set('error_reporting', E_ALL );
 
 require_once('dbconfig.php');
-
 
 #start: add new user
 if(isset($_POST["_register_user"])==1){
@@ -23,9 +23,15 @@ if(isset($_POST["_register_user"])==1){
     $querycheckuser = new \MongoDB\Driver\Query($filter, $options);    
     $cursor = $connectmanager->executeQuery('ecommercestore.users', $querycheckuser);
 
-   // $cursorArray = $cursor->toArray();
-        
-    if(!empty($cursor)):
+    $cursorArray = $cursor->toArray();
+    if(isset($cursorArray[0])) {
+    //  var_dump($cursorArray[0]);
+    //  echo "email found, pick another one ";
+     echo 'user_exist';
+    }
+    else
+    {
+       echo "email not found!, add record";  
        #now insert, user not there
        $insRec       = new MongoDB\Driver\BulkWrite;
        //insert record to MongoDB    
@@ -47,9 +53,8 @@ if(isset($_POST["_register_user"])==1){
           echo "insert_success"; 
        }else{
            echo "insert_failure";
-       }
-    else:
-    echo 'user_exist';
-    endif;
+        }
+    }
 }
+
 
